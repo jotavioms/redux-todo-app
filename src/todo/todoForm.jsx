@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Grid from '../template/grid';
 import IconButton from '../template/iconButton';
 
@@ -7,7 +8,7 @@ const CHARCODE_FOR_SHORTCUT = {
   'space': 32,
 };
 
-export default props => {
+const TodoForm = props => {
   const keyHandler = (e) => {
     if (e.charCode === CHARCODE_FOR_SHORTCUT.enter) {
       e.shiftKey ? props.handleSearch() : props.handleAdd();
@@ -49,4 +50,8 @@ export default props => {
       </Grid>
     </div>
   )
-}
+};
+
+const mapStateToProps = state => ({ description: state.todo.description });
+
+export default connect(mapStateToProps)(TodoForm);
