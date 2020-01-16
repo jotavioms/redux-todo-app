@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import Grid from '../template/grid';
 import IconButton from '../template/iconButton';
+import { changeDescription } from './todoActions';
+import { bindActionCreators } from 'redux';
 
 const CHARCODE_FOR_SHORTCUT = {
   'enter': 13,
@@ -27,7 +30,7 @@ const TodoForm = props => {
           className='form-control'
           placeholder='Adicione uma tarefa'
           value={props.description}
-          onChange={props.handleChange}
+          onChange={props.changeDescription}
           onKeyPress={keyHandler}
         />
       </Grid>
@@ -53,5 +56,6 @@ const TodoForm = props => {
 };
 
 const mapStateToProps = state => ({ description: state.todo.description });
+const mapDispatchToProps = dispatch => bindActionCreators({ changeDescription }, dispatch);
 
-export default connect(mapStateToProps)(TodoForm);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
