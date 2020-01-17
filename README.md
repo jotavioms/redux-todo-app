@@ -1,6 +1,6 @@
-# React Todo App
+# Redux Todo App
 
-Simple todo app with pure react.
+Simple todo app with react and redux.
 
 ## Install
 
@@ -33,3 +33,11 @@ const store = createStore(reducers, devTools);
 ### Chrome
 
 * Redux Dev Tools
+
+## Redux dependencies
+
+* redux
+* react-redux
+* redux-promise
+* redux-multi
+* redux-thunk
