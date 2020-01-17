@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Grid from '../template/grid';
 import IconButton from '../template/iconButton';
-import { add, changeDescription, search } from './todoActions';
+import { add, changeDescription, clear, search } from './todoActions';
 
 const CHARCODE_FOR_SHORTCUT = {
   'enter': 13,
@@ -22,19 +22,19 @@ class TodoForm extends Component  {
   };
 
   keyHandler(e) {
-    const { add, search, description } = this.props;
+    const { add, clear, search, description } = this.props;
 
     if (e.charCode === CHARCODE_FOR_SHORTCUT.enter) {
       e.shiftKey ? search() : add(description);
     }
 
     if (e.charCode === CHARCODE_FOR_SHORTCUT.space && e.shiftKey) {
-      this.props.handleClear();
+      clear();
     }
   };
 
   render() {
-    const { add, changeDescription, search, description } = this.props;
+    const { add, changeDescription, clear, search, description } = this.props;
 
     return (
       <div role='form' className='todoForm'>
@@ -62,7 +62,7 @@ class TodoForm extends Component  {
           <IconButton
             style='default'
             icon='close'
-            onClick={this.props.handleClear}
+            onClick={() => clear()}
           />
         </Grid>
       </div>
@@ -71,6 +71,6 @@ class TodoForm extends Component  {
 };
 
 const mapStateToProps = state => ({ description: state.todo.description });
-const mapDispatchToProps = dispatch => bindActionCreators({ add, changeDescription, search }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ add, changeDescription, clear, search }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
