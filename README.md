@@ -41,3 +41,7 @@ const store = createStore(reducers, devTools);
 * redux-promise
 * redux-multi
 * redux-thunk
+
+## References
+
+https://css-tricks.com/learning-react-redux/
