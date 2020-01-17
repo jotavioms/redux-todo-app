@@ -57,12 +57,12 @@ class TodoForm extends Component  {
           <IconButton
             style='info'
             icon='search'
-            onClick={() => search()}
+            onClick={search}
           />
           <IconButton
             style='default'
             icon='close'
-            onClick={() => clear()}
+            onClick={clear}
           />
         </Grid>
       </div>
